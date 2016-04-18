@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<html>
+
+   <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <link rel="stylesheet" href="style.css">
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed&subset=latin' rel='stylesheet' type='text/css'>
+      <script type="text/javascript" src="script.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <title>FCC - Wikipedia-Viewer "WIP".</title>
+   </head>
+
+   <body>
+      <div id="wrapper">
+        <span id="author">Made by<a href="#"> Namax0r</a></span>
+         <div class="row">
+            <div class="col-md-12" id="top-column">
+               <img src="img/Wikipedia_logo_white.png" alt="wikipedia logo" class="img-circle" id="wiki-logo">
+               <h1 id="wiki-logo-text">
+                  <span class="bigger-size">W</span>IKIPEDI<span class="bigger-size">A</span>
+                  <span class="bigger-size">V</span>IEWE<span class="bigger-size">R</span>
+               </h1>
+               <div class="form-inline">
+                  <div class="form-group">
+                     <input type="text" class="form-control" id="search-word" placeholder="Wiki search..." autocomplete='off'>
+                  </div>
+                  <button class="btn btn-default" id="wiki-search-btn">Search</button>
+                  <a href="https://en.wikipedia.org/wiki/Special:Random">
+                     <button class="btn btn-default" id="wiki-random-btn">Random Article</button>
+                  </a>
+               </div>
+            </div>|
+         </div>
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12" id="middle-column"></div>
+            </div>
+         </div>
+      </div>
+      <script>
+         $(document).ready(function () {
+            $("#wiki-search-btn").click(function () {
+               var searchWord = $('#search-word').val();
+               $.ajax({
+                  type: "GET",
+                  url: "http://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=" + searchWord + "&callback=?",
+                  contentType: "application/json; charset=utf-8",
+                  async: false,
+                  dataType: "json",
+                  success: function (data, textStatus, jqXHR) {
+                     console.log(data);
+                     for (var i = 0; i < data[1].length; i++) {
+                        console.log(data[1][i]);
+                        $("#middle-column").append("<div><a class='default-link' href=" + data[3][i] + "></a><h3>" + data[1][i] + "</h3><p>" + data[2][i] + "</p></div>");
+                        $("#middle-column div").addClass("testing-item");
+                        $("#testing-item a").addClass("default-link");
+                     }
+                     //$( "#results-list" ).append("<li>aaa</li>"); console.log(data[1].length); console.log(data.parse.text); document.getElementById('wiki-article').innerHTML= data.parse.text["*"];
+                  },
+                  error: function (errorMessage) {}
+               });
+            });
+         });
+      </script>
+   </body>
+
+</html>

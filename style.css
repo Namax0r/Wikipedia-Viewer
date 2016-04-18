@@ -1,0 +1,80 @@
+@font-face {
+    font-family: first;
+    src: url(font/LinLibertine_aDRS.ttf);
+}
+html {
+    height: 100%;
+    overflow: auto;
+}
+body {
+    height: 100%;
+    overflow: auto;
+    font-family: 'Open Sans', sans-serif;
+    background: #1c1e29;
+    color: #575757;
+}
+#author {
+  color: white;
+}
+#wiki-logo {
+    border: 3px solid white;
+    max-width: 200px;
+    display: inline-block;
+    margin-top: 10px;
+    max-width: 190px;
+}
+#top-column {
+    text-align: center;
+    color: #eee;
+}
+.testing-item {
+    position: relative;
+    background: #eee;
+    margin-bottom: 5px;
+    min-height: 100px;
+}
+.testing-item:hover {
+    border-left: 4px solid #ff7530;
+}
+#wiki-logo-text {
+    font-family: 'first', sans-serif;
+    font-size: 3.5em;
+}
+.bigger-size {
+    font-size: 1.6em;
+}
+.form-control:focus {
+    border-color: #ff7530;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 117, 48, 0.6);
+}
+button:hover {
+    background: #ff7530 !important;
+    border-color: #f4641c !important;
+}
+.default-link {
+    /* all rules required to make the whole div clickable */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    /* this is a fix for IE7-9 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+h3 {
+    margin-top: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    margin-left: 5px;
+}
+p {
+    margin-left: 5px;
+}
+
+/*.independent-link{
+    //all rules required to make other links to work
+    position: relative;
+    z-index: 100;
+}*/
